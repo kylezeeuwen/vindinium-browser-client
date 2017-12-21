@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vindinium!</title>
+  <link href="./css/main.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="main">
+    <div id="stats">
+      <table>
+        <tr>Stats will appear here</tr>
+      </table>
+    </div>
+    <div id="map">
+      <canvas width="1000" height="1000" id="map-display"></canvas>
+    </div>
+    <div id="admin">
+      <label>Server</label>
+      <input placeholder="http://vindinium.org" id="serverURL" />
+      <br />
+      <label>Bot Name</label>
+      <input value="zayquanOne" id="botname" />
+      <br />
+      <label>Robot ID</label>
+      <input value="f2ykrfc2" id="robotID" />
+      <br />
+      <label>Training</label>
+      <input type="checkbox" id="isTraining" checked />
+      <br />
+      <button id="join">Join</button>
+    </div>
+  </div>
+  <div id="preload-imgs">
+    <img src="./img/tree.png" id="sprite-tree" />
+    <img src="./img/tavern.png" id="sprite-tavern" />
+    <img src="./img/goldmine.png" id="sprite-goldmine" />
+    <img src="./img/hero.png" id="sprite-hero" />
+  </div>
+  <script src="./js/index.js" type="text/javascript"></script>
+  <script src="./js/renderer.js" type="text/javascript"></script>
+  <script src="./js/bots/zayquanOne.js" type="text/javascript"></script>
+  <script src="./js/stats.js" type="text/javascript"></script>
+</body>
+</html>
