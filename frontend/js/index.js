@@ -20,11 +20,12 @@
           return res.json()
         }
         console.error(res)
-        return {}
+        throw new Error('Did not get 200 status response')
       })
       .catch(e => {
         console.error(e)
-        return {}
+	// should throw here ?
+        return null
       })
   }
 
@@ -40,6 +41,10 @@
   }
 
   function handleResponse (response, botname) {
+    // You've crashed or something
+    if (response === null) {
+      return window.RenderCrash()
+    }
     // Do this immediately
     sendMove(response, botname)
     // Then render after
@@ -47,6 +52,7 @@
       if (response.game) {
         window.RenderGame(response.game)
         window.RenderStats(response.game)
+        window.RenderViewUrl(response.viewUrl)
       }
       if (response.game && response.game.finished) {
         window.RenderOver()
@@ -57,13 +63,16 @@
   function joinServer ({ botname, server, id, training }) {
     robotID = id
     return doPOST(
-      `${server}${training ? '/api/training' : '/api/arena'}`, { key: id }
+      `${server}${training ? '/api/training' : '/api/arena'}`, { key: id, map: 'm1', moves: 100 }
     )
       .then((response) => {
         if (response.playUrl) {
           playUrlCache = response.playUrl
         }
         handleResponse(response, botname)
+      })
+      .catch(ignore => {
+        window.RenderCrash()
       })
   }
 

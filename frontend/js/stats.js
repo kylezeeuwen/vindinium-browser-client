@@ -66,5 +66,11 @@
     statsDiv.appendChild(table)
   }
 
+  function renderViewUrl (url) {
+    const link = makeEle({ tag: 'a', attrs: { href: url, target: '_blank' }, body: 'Game view link - in case you crash!' })
+    statsDiv.appendChild(link)
+  }
+
   window.RenderStats = renderStats
+  window.RenderViewUrl = renderViewUrl
 }())

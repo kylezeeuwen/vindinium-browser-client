@@ -103,6 +103,14 @@
     canvas.fillText('GAME OVER', 300, 300)
   }
 
+  function gameCrashed () {
+    canvas.fillStyle = 'rgba(0, 0, 0, 0.7)'
+    canvas.fillRect(0, 0, canvasSize, canvasSize)
+    canvas.fillStyle = 'red'
+    canvas.font = `100px Impact`
+    canvas.fillText('You crashed!', 225, 300)
+  }
   window.RenderGame = renderGame
   window.RenderOver = gameOver
+  window.RenderCrash = gameCrashed
 }())
